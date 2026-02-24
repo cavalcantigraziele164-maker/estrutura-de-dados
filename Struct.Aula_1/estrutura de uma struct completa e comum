@@ -1,0 +1,38 @@
+#include <stdio.h> // biblioteca padrão de entrada e saída.Ela permite usar:printf,scanf, fgets.
+#include <string.h> //Inclui funções para manipular strings.Ela permite usar:strcpy, strlen, strcmp.
+
+#define TAM 3 //Define uma constante chamada TAM.Toda vez que aparecer TAM no código, o compilador entende como 3.Mas constante.
+
+struct Endereco {
+    char nome[50];
+    char cidade[50];
+};
+
+void inicia_lista(struct Endereco lista[]) {
+    for (int i = 0; i < TAM; i++) {
+        strcpy(lista[i].nome, ""); //lista[i] → posição i do vetor,.nome → campo nome, "" → string vazia.
+        strcpy(lista[i].cidade, "");
+    } Primeira chave fecha o for.
+    
+}Segunda chave fecha a função.
+
+int main() { //Tudo que está dentro do main é executado.
+    struct Endereco lista[TAM]; //Aqui sim ele cria um vetor.Cada uma tem: nome e cidade. tres listas, lista0,1 e 2.
+
+    inicia_lista(lista); //Está chamando a função. e pede pra ela limpar tudo( caso tenha dados antes da inserção dos novos.)
+
+    for (int i = 0; i < TAM; i++) {
+        printf("Digite o nome: ");
+        fgets(lista[i].nome, 50, stdin); //lista[i].nome=onde vai guardar, stdin → teclado;Leia o nome digitado e guarde na posição i.
+
+        printf("Digite a cidade: ");
+        fgets(lista[i].cidade, 50, stdin);
+    }
+
+    for (int i = 0; i < TAM; i++) {
+        printf("\nNome: %s", lista[i].nome); //%s → imprimir string, \n é quebra de linha para não ficar grudado. lista[i].nome →pega o nome
+        printf("\nCidade: %s", lista[i].cidade);
+    }
+
+    return 0;
+}
