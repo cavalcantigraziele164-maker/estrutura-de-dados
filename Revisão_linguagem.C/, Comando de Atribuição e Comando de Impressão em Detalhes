@@ -1,0 +1,17 @@
+/* Este programa imprime 'olá, mundo' na tela
+   Criador: Graziele
+   Data:26/02/2026
+*/
+#include <stdio.h>  //biblioteca de funcionalidades de IO(entrada e saída)
+char nome[20]="Graziele"; 
+char sexo = 'F'; 
+int idade=22;
+double salario=6522.20;
+int main(){
+	printf("Seus dados sao:\n");
+	printf("\tYour name is: %s\n", nome);
+	printf("\tYou are %c\n", sexo);
+	printf("\tYour salary is: %.2f\n", salario); //%.2f é pra 2 números decimais depois da vírgula.
+	printf("\tYou are %d anos de idade", idade); //\t é para tab
+	return 0; // informar que deu tudo certo no programa.
+}
