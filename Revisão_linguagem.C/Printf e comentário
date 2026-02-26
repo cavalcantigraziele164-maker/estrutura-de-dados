@@ -1,0 +1,11 @@
+/* Este programa imprime 'olá, mundo' na tela
+   Criador: Graziele
+   Data:26/02/2026
+*/
+
+#include <stdio.h>  //biblioteca de funcionalidades de IO(entrada e saída)
+
+int main(){
+	printf("Ola, mundo.");
+	return 0; // informar que deu tudo certo no programa.
+}
