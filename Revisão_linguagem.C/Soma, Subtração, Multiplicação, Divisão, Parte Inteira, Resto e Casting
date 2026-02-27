@@ -1,0 +1,32 @@
+/* Este programa vai ler dois inteiros e imprime
+	- A soma dos dois números;
+	-O primeiro menos o segundo;
+	- A parte inteira da divisão do primeiro pelo segundo;
+	- O resto da divisão do primeiro pelo segundo;
+	- A multiplicação de dois números;
+	- O primeiro dividido pelo segundo;
+		Criador : Graziele Fernandes
+		Data : 27/02/2026
+*/
+#include <stdio.h>
+int num1;
+int num2;
+int soma = num1 + num2;
+int main(void){
+	printf("Digite numero 1:");
+	scanf("%d", &num1);
+	printf("Digite numero 2:");
+	scanf("%d", &num2);
+
+	printf("\tRESULTADOS:\n");
+	printf("\tSoma: %d\n", soma);
+	printf("\tSubtracao num1-num2: %d\n", num1-num2);
+	printf("\tSubtracao num2-num1: %d\n", num2-num1);
+	printf("\tParte inteira num1/num2: %d\n", num1/num2);
+	printf("\tParte inteira num2/num1: %d\n", num2/num1);
+	printf("\tResto de num1 por num2: %d\n", num1%num2);
+	printf("\tResto de num2 por num1: %d\n", num2%num1);
+	printf("\tMultiplicacao: %d\n", num1*num2);
+	printf("\tDivisao de num1 por num 2: %f\n", num1/ (float) num2); // casting(forçar o meu compilador a mudar o tipo da variavel para que o programa se comporte como eu quero. 
+	printf("\tDivisao de num2 por num 1: %f\n", num2/ (float) num1);
+}
