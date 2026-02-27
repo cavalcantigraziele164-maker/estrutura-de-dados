@@ -1,0 +1,26 @@
+/* Este programa lê o nome, o endereçi e o cpf de uma pessoa e os armazena em strings.
+Em seguida, imprime os valores lidos.
+   Criador: Graziele
+   Data:27/02/2026
+*/
+#include <stdio.h>  //biblioteca de funcionalidades de IO(entrada e saída)
+#define TAM_NOME 50
+#define TAM_END 100
+#define TAM_CPF 15
+	char nome[TAM_NOME];//DEFININDO QUE O TAMANHO VAI SER ATÉ 50 EM FORMA DE CONSTANTE, OU SEJA ESSE VALOR NÃO VAI MUDAR E SE PRECISAR DEPOIS ALTERAR O TAMMAX É SÓ MUDAR O VALOR DAQUI, AO INVÉS DE TER QUE PROCURAR CADA LUGAR EM QUE O TAMMAX É 50 E IR MUDANDO.
+	char endereco[TAM_END];
+	char cpf[TAM_CPF];
+int main(void){
+	printf("Informe o seu nome.");
+	fgets(nome, TAM_NOME, stdin);
+	
+	printf("Informe o endereco.");
+	fgets(endereco, TAM_END, stdin);
+	
+	printf("Informe o seu cpf.");
+	fgets(cpf, TAM_CPF, stdin);
+	
+	printf("\tSeus dados sao:\nNome: %s\nEndereco: %s\nCPF:%s\n", nome, endereco, cpf );
+
+return 0; // informar que deu tudo certo no programa.
+}
