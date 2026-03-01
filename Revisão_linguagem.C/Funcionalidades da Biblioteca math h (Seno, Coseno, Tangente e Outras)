@@ -1,0 +1,36 @@
+/*Este programa le um ângulo em graus e imprime o seno,
+	coseno e a tangente desse angulo.
+	Criador: Olibario Neto
+	Data: 28/02/2026
+*/
+	#include<stdio.h>
+	#include<math.h>
+	#define PI_RAD 3.14
+	#define PI_GRAUS 180
+
+	float ang_graus;// em graus
+	float ang_rad, cosseno;// coloca float e n int porque a resposta é flutuante.
+	float decimal;
+	
+	int main(void) {
+		printf("Informe o angulo.");
+		scanf("%f", &ang_graus);
+		
+		printf("\tAs razoes trignometricas sao:\n");
+		ang_rad= PI_RAD*ang_graus/PI_GRAUS;
+		printf("\tO seno de %.2f eh %f:\n", ang_graus, sin(ang_rad));
+		printf("\tO cos de %.2f eh %f:\n", ang_graus, cos(ang_rad));
+		printf("\tA tan de %.2f eh %f:\n", ang_graus, tan(ang_rad));
+		
+		cosseno = sqrt(1-pow(sin(ang_rad), 2)); // outra forma já que sen²+cos²=1
+		printf("\tO cosseno de %.2f eh: %f\n", ang_graus, cosseno);
+		
+		printf("Informe um numero decimal.");
+		scanf("%f", &decimal);
+		
+		printf("\tO floot desse numero eh:%f\n", floor(decimal));
+		printf("\tO log de %f eh:%f\n", log(decimal));
+		printf("\tO log 10 de %f eh: %f", log10(decimal));
+		return 0;
+		
+	}
