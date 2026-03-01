@@ -18,3 +18,28 @@ int main (void){
 	
 	return 0;
 }
+
+
+
+
+/*Este programa le um numero e imprime se ele eh par ou ímpar.
+  Criador: Graziele Fernandes Cavalcanti
+  Data: 28/04/2026
+*/
+
+#include<stdio.h>
+bool eh_impar;// 0 significa falso; Diferente de 0 eh verdadeiro.
+int main (void){
+	int num;
+	printf("Informe o numero.");
+	scanf("%d", &num);
+	
+	eh_impar= num%2;
+	
+	if(eh_impar==0)
+	printf("O numero eh par.");
+	else
+	printf("O numero eh impar");
+	
+	return 0;
+}
