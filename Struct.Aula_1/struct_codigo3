@@ -26,7 +26,7 @@ int main() {
  inicia_lista(Lista); // Inicializa a lista
  // Exemplo: Preenche a primeira entrada da lista
  printf("Digite o nome: ");
- fgets(Lista[0].nome, sizeof(Lista[0].nome), stdin);
+ fgets(Lista[0].nome, sizeof(Lista[0].nome), stdin); //sizeof é pra meio que lembrar a quantidade máxima que tem que ter, como já tinha sido declarado, ele meio que chama a declaração
  fflush(stdin); // Limpa o buffer de entrada
  printf("Digite a rua: ");
  fgets(Lista[0].rua, sizeof(Lista[0].rua), stdin);
