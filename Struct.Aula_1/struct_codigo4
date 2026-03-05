@@ -6,7 +6,7 @@ int main() {
  double d[1];
 
  printf("Tamanho de i: %zu\n", sizeof(i)); //%zu é pra quando vai imprimir o tamanho de bytes e esse tipo de dado de quantidade de bytes, n é d... é zu.
- printf("Tamanho de c: %zu\n", sizeof(c));
+ printf("Tamanho de c: %zu\n", sizeof(c)); //sizeof(c) por o numero de bytes do c.
  printf("Tamanho de f: %zu\n", sizeof(f));
  printf("Tamanho de d: %zu\n", sizeof(d));
 
