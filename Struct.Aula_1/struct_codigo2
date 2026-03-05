@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+#define TAM 10 // Tamanho da lista
+// Definição da estrutura para armazenar informações sobre endereços
+struct Endereco {
+ char nome[50];
+ char rua[100];
+ char estado[50];
+ char cidade[50];
+ char cep[10];
+};
+// Função para inicializar a lista
+void inicia_lista(struct Endereco Lista[]) {
+ for (int t = 0; t < TAM; t++) {
+ strcpy(Lista[t].nome, ""); // strcpy(copia) = função inicia_lista. pega o vetor da lista e apaga pra estar pronto
+ strcpy(Lista[t].rua, "");
+ strcpy(Lista[t].estado, "");
+ strcpy(Lista[t].cidade, "");
+ strcpy(Lista[t].cep, "");
+ }
+}
+int main() {
+ struct Endereco Lista[TAM]; // Declaração da matriz de estruturas
+ inicia_lista(Lista); // Inicializa a lista
+ // Exemplo: Preenche a primeira entrada da lista
+ strcpy(Lista[0].nome, "João"); // aqui está preenchendo as entradas.
+ strcpy(Lista[0].rua, "Rua A");
+ strcpy(Lista[0].estado, "SP");
+ strcpy(Lista[0].cidade, "São Paulo");
+ strcpy(Lista[0].cep, "01234-567");
+ // Exemplo: Imprime os dados do primeiro elemento da lista.
+ printf("Nome: %s\n", Lista[0].nome);
+ printf("Rua: %s\n", Lista[0].rua);
+ printf("Estado: %s\n", Lista[0].estado);
+ printf("Cidade: %s\n", Lista[0].cidade);
+ printf("CEP: %s\n", Lista[0].cep);
+ return 0;
+}
