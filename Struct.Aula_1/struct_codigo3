@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+#define TAM 10 // Tamanho da lista
+#define MAX_STRING 100 // Tamanho máximo para as strings (definido para chamar essa constante depois)
+// Definição da estrutura para armazenar informações sobre endereços
+struct Endereco {
+ char nome[MAX_STRING];
+ char rua[MAX_STRING];
+ char estado[MAX_STRING];
+ char cidade[MAX_STRING];
+ char cep[MAX_STRING];
+};
+// Função para inicializar a lista
+void inicia_lista(struct Endereco Lista[]) {
+ for (int t = 0; t < TAM; t++) {
+ strcpy(Lista[t].nome, "");
+ strcpy(Lista[t].rua, "");
+ strcpy(Lista[t].estado, "");
+ strcpy(Lista[t].cidade, "");
+ strcpy(Lista[t].cep, "");
+ }
+}
+COPIE PARA TESTAR
+int main() {
+ struct Endereco Lista[TAM]; // Declaração da matriz de estruturas
+ inicia_lista(Lista); // Inicializa a lista
+ // Exemplo: Preenche a primeira entrada da lista
+ printf("Digite o nome: ");
+ fgets(Lista[0].nome, sizeof(Lista[0].nome), stdin);
+ fflush(stdin); // Limpa o buffer de entrada
+ printf("Digite a rua: ");
+ fgets(Lista[0].rua, sizeof(Lista[0].rua), stdin);
+ fflush(stdin);
+ printf("Digite o estado: ");
+ fgets(Lista[0].estado, sizeof(Lista[0].estado), stdin);
+ fflush(stdin);
+ printf("Digite a cidade: ");
+ fgets(Lista[0].cidade, sizeof(Lista[0].cidade), stdin);
+ fflush(stdin);
+ printf("Digite o CEP: ");
+ fgets(Lista[0].cep, sizeof(Lista[0].cep), stdin);
+ fflush(stdin);
+ // Exemplo: Imprime os dados do primeiro elemento da lista
+ printf("Nome: %s\n", Lista[0].nome);
+ printf("Rua: %s\n", Lista[0].rua);
+ printf("Estado: %s\n", Lista[0].estado);
+ printf("Cidade: %s\n", Lista[0].cidade);
+ printf("CEP: %s\n", Lista[0].cep);
+ return 0;
+}
