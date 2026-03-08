@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <limits.h> // Para limites dos tipos inteiros
+int main() {
+ // Exibir o tamanho dos tipos inteiros em bytes
+ printf("Tamanho do int: %lu bytes\n", sizeof(int));//%lu é a mesma coisa que %zu, só que lu é um pouco mais antigo.
+ printf("Tamanho do unsigned int: %lu bytes\n", sizeof(unsigned int));
+ printf("Tamanho do short int: %lu bytes\n", sizeof(short int));
+ printf("Tamanho do long int: %lu bytes\n", sizeof(long int));
+ printf("Tamanho do long long int: %lu bytes\n", sizeof(long long int));
+ 
+ // Exibir os valores máximos e mínimos para int com sinal e sem sinal
+ printf("\nValores para 'int' (com sinal):\n");
+ printf("INT_MIN: %d\n", INT_MIN); // Mínimo valor para int// constante que já tem na biblioteca limits.h
+ printf("INT_MAX: %d\n", INT_MAX); // Máximo valor para int
+ 
+ printf("\nValores para 'unsigned int' (sem sinal):\n");
+ printf("0 a %u\n", UINT_MAX); // Máximo valor para unsigned int sem negativo, ent dobra o valor 
+ return 0;
+}
