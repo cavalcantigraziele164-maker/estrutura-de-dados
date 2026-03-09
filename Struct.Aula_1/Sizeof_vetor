@@ -1,0 +1,22 @@
+#include <stdio.h>
+void inverterVetor(int vetor[], int tamanho) { //Essa função recebe:o vetor;o tamanho dele
+ int temp;//guarda o numero temporario
+ for (int i = 0; i < tamanho / 2; i++) { //Porque você só precisa trocar metade do vetor. 1 2 3 4 5 troca:1 ↔ 5;2 ↔ 4
+ temp = vetor[i]; 
+ vetor[i] = vetor[tamanho - 1 - i]; //SE: tamanho=5 e i=0, 5-1-0=4 vetor[4]=5 
+ vetor[tamanho - 1 - i] = temp; // se i=0, vetor[4]=5=temp(vetor[i]= 1 - troca 5 por 1
+ }
+}
+int main() {
+ int vetor_original[] = {1, 2, 3, 4, 5};
+ int tamanho = sizeof(vetor_original) / sizeof(vetor_original[0]); // int tamanho = 20/4=5
+ printf("Vetor original: ");
+ for (int i = 0; i < tamanho; i++) {
+ printf("%d ", vetor_original[i]); // mostra o vetor antes da troca
+ }
+ inverterVetor(vetor_original, tamanho); //chama a função
+ printf("\nVetor invertido: ");
+ for (int i = 0; i < tamanho; i++) {
+ printf("%d ", vetor_original[i]); // vetor depois da troca, o nome é o mesmo mas depois do inverter ele muda oque tem.
+ }
+ return 0;
