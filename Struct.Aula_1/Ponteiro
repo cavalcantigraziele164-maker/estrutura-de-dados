@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main() {
+ // Declare uma variável inteira
+ int valor = 10;
+ // Declare um ponteiro para int e atribua o endereço da variável 'valor' a ele
+ int *ponteiro = &valor;
+ // Imprima o valor apontado pelo ponteiro usando o operador de desreferência '*'
+ printf("O valor da variável apontada pelo ponteiro é: %d\n", *ponteiro);
+ return 0;
+}
