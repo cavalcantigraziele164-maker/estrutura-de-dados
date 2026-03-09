@@ -8,3 +8,14 @@ int main() {
  printf("O valor da variável apontada pelo ponteiro é: %d\n", *ponteiro);
  return 0;
 }
+
+
+ponteiro para mostrar o valor da variavel precisa do *
+#include <stdio.h>
+int main() {
+ int valor = 10;
+ int *ponteiro = &valor;
+ // Use o operador de desreferência * para acessar o valor apontado pelo ponteiro
+ printf("O valor da variável apontada pelo ponteiro é: %d\n", *ponteiro); // se não tiver com o * vai mostrar o endereço da variavel.
+ return 0;
+}
