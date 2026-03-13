@@ -1,0 +1,17 @@
+#include <stdio.h>
+void calcularMedia(int *array, int tamanho, double *media) {
+ int soma = 0;
+ for (int i = 0; i < tamanho; i++) {
+ soma += array[i]; // em outras palavras soma = soma + array[i](posição do vetor)
+ }
+ *media = (double)soma / tamanho;
+}
+int main() {
+ int array[] = {12, 10, 13, 9};
+
+ int tamanho = sizeof(array) / sizeof(array[0]); // o array tem 4 valores int, então 4*4 é 16 e o sizeof(array[0]) é 4 porque é só um elemento. 
+ double media; // declarou que a media é double
+ calcularMedia(array, tamanho, &media); // &media é o endereço da memoria.
+ printf("Média: %.2lf\n", media);
+ return 0;
+}
