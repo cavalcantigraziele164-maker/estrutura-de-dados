@@ -1,0 +1,34 @@
+#include <stdio.h>
+// Função para calcular o comprimento de uma string
+int calcularComprimento(const char *str) { //ponteiro da string, ele vai no primeiro caractere da string
+ int comprimento = 0; // comprimento inicial é 0
+ while (*str != '\0') { //enquanto o que tem dentro for diferente de \0
+ comprimento++;//continua
+ str++; // Avança para o próximo caractere na string
+ }
+ return comprimento; //retorna comprimento
+}
+// Função para imprimir uma string de trás para frente
+void imprimirReverso(const char *str) { 
+ const char *end = str; //cria um ponteiro chamado end, ent, end=100-H que é o primeiro caractere
+ while (*end != '\0') { //enquanto end for diferente de \0 
+ end++; // Encontra o final da string// continua
+ }
+ end--; // Volta um caractere para apontar para o último caractere válido
+ printf("String de trás para frente: ");
+ while (end >= str) { //enquanto end for maior ou igual a str ele imprime, o endereço no caso
+ printf("%c", *end); // Imprime os caracteres da string de trás para
+frente
+ end--;//volta um caractere
+ }
+ printf("\n");
+}
+int main() {
+ const char *minhaString = "Hello, Ponteiros!"; //variavel char que será contada
+ // Calculando e exibindo o comprimento da string
+ int comprimento = calcularComprimento(minhaString); //chama a função
+ printf("Comprimento da string: %d\n", comprimento); //comprimento foi colocado que é igual a função, o resultado no caso
+ // Imprimindo a string de trás para frente
+ imprimirReverso(minhaString); //chama a função, printf está incluso na função
+ return 0;
+}
