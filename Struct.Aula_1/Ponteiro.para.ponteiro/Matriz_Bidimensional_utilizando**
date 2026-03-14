@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h> //biblioteca para malloc e free
+// Função para criar uma matriz dinâmica
+int **criarMatriz(int linhas, int colunas) {
+ int **matriz = (int **)malloc(linhas * sizeof(int *));
+// Alocação para as linhas
+ for (int i = 0; i < linhas; i++) {
+ matriz[i] = (int *)malloc(colunas * sizeof(int));
+// Alocação para as colunas de cada linha
+ }
+ return matriz;
+}
+// Função para preencher a matriz com valores sequenciais
+void preencherMatriz(int **matriz, int linhas, int colunas)
+{
+ int valor = 1;
+ for (int i = 0; i < linhas; i++) {
+ for (int j = 0; j < colunas; j++) {
+ matriz[i][j] = valor++;
+ }
+ }
+}
+// Função para imprimir a matriz
+void imprimirMatriz(int **matriz, int linhas, int colunas)
+{
+ for (int i = 0; i < linhas; i++) {
+ for (int j = 0; j < colunas; j++) {
+ printf("%d ", matriz[i][j]);
+ }
+ printf("\n");
+ }
+}
+// Função para liberar a memória da matriz
+void liberarMatriz(int **matriz, int linhas) {
+ for (int i = 0; i < linhas; i++) {
+ free(matriz[i]); // Libera a memória de
+cada linha
+ }
+ free(matriz); // Libera a memória para as
+linhas
+}
+int main() {
+ const int LINHAS = 3;
+ const int COLUNAS = 4;
+ // Criação da matriz dinâmica
+ int **matriz = criarMatriz(LINHAS,
+COLUNAS);
+ // Preenchendo e exibindo a matriz
+ preencherMatriz(matriz, LINHAS, COLUNAS);
+ printf("Matriz preenchida:\n");
+ imprimirMatriz(matriz, LINHAS, COLUNAS);
+ // Liberando a memória alocada
+ liberarMatriz(matriz, LINHAS);
+ return 0;
+}
