@@ -1,55 +1,113 @@
-#include <stdio.h>
-#include <stdlib.h> //biblioteca para malloc e free
-// Função para criar uma matriz dinâmica
+#include <stdio.h>  // Biblioteca para usar o printf (mostrar na tela)
+#include <stdlib.h> // Biblioteca para usar o malloc (alocar memória) e free (liberar memória)
+
+// -----------------------------------------------------------------------------
+// 1. CRIANDO A MATRIZ DINÂMICA
+// -----------------------------------------------------------------------------
+
+// O '**' indica que esta função vai retornar um "ponteiro para ponteiro".
+// Na prática, isso é um vetor principal que guarda os ENDEREÇOS das linhas da matriz.
 int **criarMatriz(int linhas, int colunas) {
- int **matriz = (int **)malloc(linhas * sizeof(int *));
-// Alocação para as linhas
- for (int i = 0; i < linhas; i++) {
- matriz[i] = (int *)malloc(colunas * sizeof(int));
-// Alocação para as colunas de cada linha
- }
- return matriz;
+    
+    // -int **matriz: Finalmente, criamos a nossa variável chamada matriz. Ela é do tipo int ** (um papel que aponta para o cofre). 
+    // Nós guardamos nela a resposta que o malloc deu (Lote 500). //* para linhas e * para colunas
+    // -(int **): O malloc devolve o endereço do Lote 500, mas ele devolve de forma burra (genérica). Colocamos o (int **) na frente para "ensinar" o seu programa:
+    // "Ei, esse Lote 500 que o malloc devolveu é um Cofre (Ponteiro Duplo).Dentro dele, nós vamos guardar outros papéis (Ponteiros Simples) que apontam para números inteiros".
+    // -malloc: O computador vai lá na memória, acha um espaço livre de 24 bytes, reserva para você e diz: "Pronto, reservei. O endereço desse cofre começa no Lote 500".
+    // -linhas * sizeof(int *): O '*' aqui é vital! Ele diz: "calcule o tamanho de um ENDEREÇO DE MEMÓRIA
+    // (ponteiro) e multiplique pela quantidade de linhas". 
+    int **matriz = (int **)malloc(linhas * sizeof(int *));
+    
+    // Este laço vai passar por cada espaço desse vetor principal que acabamos de criar.
+    for (int i = 0; i < linhas; i++) {
+        
+        // Para cada índice 'i', alocamos um novo bloco de memória (a linha em si).
+        // (int *): Avisamos que este bloco vai guardar números inteiros normais, não endereços.
+        // colunas * sizeof(int): Aqui NÃO tem o '*'. Queremos o tamanho exato de um NÚMERO INTEIRO,
+        // multiplicado pelo número de colunas.
+        // O endereço gerado por esse malloc é salvo dentro do vetor principal (matriz[i]).
+        matriz[i] = (int *)malloc(colunas * sizeof(int));
+    }
+    
+    // Retornamos o ponteiro principal (que agora está conectado a todas as linhas).
+    return matriz;
 }
-// Função para preencher a matriz com valores sequenciais
-void preencherMatriz(int **matriz, int linhas, int colunas)
-{
- int valor = 1;
- for (int i = 0; i < linhas; i++) {
- for (int j = 0; j < colunas; j++) {
- matriz[i][j] = valor++;
- }
- }
+
+// -----------------------------------------------------------------------------
+// 2. PREENCHENDO A MATRIZ
+// -----------------------------------------------------------------------------
+
+// A função recebe o 'int **matriz', ou seja, o endereço de onde nossa estrutura começa.
+void preencherMatriz(int **matriz, int linhas, int colunas) {
+    int valor = 1; // Número inicial que será inserido.
+    
+    for (int i = 0; i < linhas; i++) {           // Percorre os índices das linhas
+        for (int j = 0; j < colunas; j++) {      // Percorre os índices das colunas
+            
+            // matriz[i][j]: Ao usar colchetes, a linguagem C faz o trabalho de "seguir" 
+            // os ponteiros automaticamente para você. Ela acessa a posição final na memória
+            // e salva o 'valor' lá dentro. O '++' soma 1 na variável logo em seguida.
+            matriz[i][j] = valor++;
+        }
+    }
 }
-// Função para imprimir a matriz
-void imprimirMatriz(int **matriz, int linhas, int colunas)
-{
- for (int i = 0; i < linhas; i++) {
- for (int j = 0; j < colunas; j++) {
- printf("%d ", matriz[i][j]);
- }
- printf("\n");
- }
+
+// -----------------------------------------------------------------------------
+// 3. IMPRIMINDO A MATRIZ
+// -----------------------------------------------------------------------------
+
+void imprimirMatriz(int **matriz, int linhas, int colunas) {
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            
+            // O '%d' diz ao printf para imprimir um número inteiro.
+            // Lemos o valor real que está armazenado na posição [i][j].
+            printf("%d ", matriz[i][j]);
+        }
+        // Após imprimir todos os itens daquela linha, pula para a linha de baixo.
+        printf("\n");
+    }
 }
-// Função para liberar a memória da matriz
+
+// -----------------------------------------------------------------------------
+// 4. LIBERANDO A MEMÓRIA
+// -----------------------------------------------------------------------------
+
+// O C não limpa a memória sozinho. Precisamos do 'free' para tudo que usou 'malloc'.
 void liberarMatriz(int **matriz, int linhas) {
- for (int i = 0; i < linhas; i++) {
- free(matriz[i]); // Libera a memória de
-cada linha
- }
- free(matriz); // Libera a memória para as
-linhas
+    
+    // REGRA: A liberação ocorre de dentro para fora.
+    for (int i = 0; i < linhas; i++) {
+        // matriz[i] é um ponteiro simples (*). 
+        // Aqui, liberamos a memória que guarda os números inteiros daquela linha.
+        free(matriz[i]); 
+    }
+    
+    // Após liberar as linhas, o vetor principal fica apontando para o nada.
+    // Então, liberamos o vetor principal (o ponteiro duplo **) também.
+    free(matriz);
 }
+
+// -----------------------------------------------------------------------------
+// 5. FUNÇÃO PRINCIPAL
+// -----------------------------------------------------------------------------
+
 int main() {
- const int LINHAS = 3;
- const int COLUNAS = 4;
- // Criação da matriz dinâmica
- int **matriz = criarMatriz(LINHAS,
-COLUNAS);
- // Preenchendo e exibindo a matriz
- preencherMatriz(matriz, LINHAS, COLUNAS);
- printf("Matriz preenchida:\n");
- imprimirMatriz(matriz, LINHAS, COLUNAS);
- // Liberando a memória alocada
- liberarMatriz(matriz, LINHAS);
- return 0;
+    // 'const' garante que esses valores de tamanho não sejam alterados por engano.
+    const int LINHAS = 3;
+    const int COLUNAS = 4;
+    
+    // Declaramos 'matriz' como um ponteiro duplo (int **) para receber o retorno da função.
+    int **matriz = criarMatriz(LINHAS, COLUNAS);
+    
+    // Chamadas das funções passando a nossa estrutura de dados recém-criada.
+    preencherMatriz(matriz, LINHAS, COLUNAS);
+    
+    printf("Matriz preenchida:\n");
+    imprimirMatriz(matriz, LINHAS, COLUNAS);
+    
+    // Libera toda a memória antes de fechar o programa para evitar vazamentos (memory leaks).
+    liberarMatriz(matriz, LINHAS);
+    
+    return 0; // Indica ao sistema operacional que a execução foi um sucesso.
 }
