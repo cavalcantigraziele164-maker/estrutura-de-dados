@@ -1,0 +1,25 @@
+//Ponteiro
+void modificarValor(int *ptr) { //função modifica valor
+*ptr=100; // vai por o valor 100 dentro do inteiro que o ponteiro apontar
+}
+int main() {
+int x=10;
+modificarValor(&x); //mostrando o endereço do inteiro que ocorrerá a função
+printf("Novo valor de  eh:", x);
+return 0;
+}
+
+
+//Ponteiro para ponteiro
+void alocarMemoria(int **ptr) {  **ptr → ponteiro para ponteiro de inteiro
+*ptr = (int *)malloc(sizeof(int)); // malloc serve para reservar memória, reserva espaço para 1 inteiro na memória. tipo 5000, aí int * é trate esse endereço como 
+ponteiro para int. *ptr vai ser o ponteiro do main ou seja ptr= endereço de memoria reservada que como o exemplo *ptr=5000
+**ptr = 50; // valor que vai ter dentro de *ptr
+}
+int main() {
+int *ptr = NULL;
+alocarMemoria(&ptr); // Passa o endereço de 'ptr' para a função printf("Valor alocado: %d\n"
+printf("Valor alocado: %d\n", *ptr); //
+free(ptr); // Libera a memória alocada
+return 0;
+}
