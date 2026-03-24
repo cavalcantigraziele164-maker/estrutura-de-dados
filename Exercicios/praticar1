@@ -1,0 +1,27 @@
+Desenvolva um programa em linguagem C que receba como parâmetro o
+endereço da primeira posição de um vetor do tipo int e a quantidade de
+elementos no vetor. A função deverá calcular e exibir a soma de todos os
+elementos presentes no vetor. Faça também o uso da chamada da função
+principal para demonstrar o funcionamento. É obrigatório utilizar a
+aritmética de ponteiros para percorrer o vetor e realizar a soma dos valores.
+(Caso prefiram, podem definir um vetor como constante).
+
+#include <stdio.h>
+#define TAM 4
+
+soma_vetor(int *vetor, int tamanho) {
+int total = 0;
+int i=0;
+for(i=0; i< tamanho; i++) {
+total = total + *(vetor + i);
+}
+return total;
+}
+int main () {
+numeros[TAM] = {10,20,30,40};
+int resultado = soma_vetor(numeros);
+
+printf("a soma dos vetores e:%d", resultado);
+
+return 0;
+}
